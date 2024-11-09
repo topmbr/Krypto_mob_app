@@ -1,15 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Krypto.Services;
+using Krypto.Interface;
 
 namespace Krypto.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class HelloController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Index()
+        private readonly INewService _newService;
+
+        public HelloController(INewService newService)
         {
-            return Ok("Hello World");
+            _newService = newService;
+        }
+
+        [HttpGet]
+        public IActionResult GetMessage()
+        {
+            var message = _newService.GetMessage();
+            return Ok(message);
         }
     }
 }

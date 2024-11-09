@@ -1,5 +1,7 @@
 using Krypto.Interface;
+using Krypto.Interfaces;
 using Krypto.Services;
+using Krypto.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Регистрация вашего нового сервиса
+// Регистрация репозитория и сервиса
+builder.Services.AddScoped<IRepository, NewRepository>();
 builder.Services.AddScoped<INewService, NewService>();
 
 var app = builder.Build();

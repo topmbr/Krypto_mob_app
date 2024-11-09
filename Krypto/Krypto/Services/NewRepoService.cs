@@ -1,14 +1,13 @@
 ﻿using Krypto.Interface;
 using Krypto.Interfaces;
-using Krypto.Repositories;
 
 namespace Krypto.Services
 {
-    public class NewService : INewService
+    public class NewRepoService : INewService
     {
         private readonly IRepository _repository;
 
-        public NewService(IRepository repository)
+        public NewRepoService(IRepository repository)
         {
             _repository = repository;
         }
@@ -17,5 +16,6 @@ namespace Krypto.Services
         {
             return _repository.GetData();
         }
+
     }
 }
